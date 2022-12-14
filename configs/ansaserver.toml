@@ -1,0 +1,5 @@
+bindAddr = ":8080"
+logLevel = "debug"
+
+[store]
+databaseUrl = "host=localhost user=postgres password=saxil20021212 dbname=user sslmode=disable"

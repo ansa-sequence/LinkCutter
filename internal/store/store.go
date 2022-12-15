@@ -6,8 +6,9 @@ import (
 )
 
 type Store struct {
-	config *Config
-	db     *sql.DB
+	config         *Config
+	db             *sql.DB
+	userRepository *UserRepository
 }
 
 func NewStore(config *Config) *Store {
@@ -32,4 +33,14 @@ func (st *Store) Open() error {
 
 func (st *Store) Close() {
 	st.db.Close()
+}
+
+func (st *Store) User() *UserRepository {
+	if st.userRepository != nil {
+		return st.userRepository
+	}
+	st.userRepository = &UserRepository{
+		store: st,
+	}
+	return st.userRepository
 }

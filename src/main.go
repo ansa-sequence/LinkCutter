@@ -24,8 +24,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	server := ansaserver.NewServer(config)
-	if err := server.Start(); err != nil {
+	if err := ansaserver.Start(config); err != nil {
 		log.Fatal(err)
 	}
 }
